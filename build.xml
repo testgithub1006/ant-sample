@@ -4,8 +4,7 @@
     <property name="src.dir"     value="src"/>
     <property name="build.dir"   value="build"/>
     <property name="classes.dir" value="${build.dir}/classes"/>
-   <!-- <property name="jar.dir"     value="${build.dir}/jar"/>   -->
-    <property name="war.dir"     value="${build.dir}/war"/>
+    <property name="jar.dir"     value="${build.dir}/jar"/>  
     <property name="doc.dir"     value="doc"/>
 
     <!-- targets -->
@@ -14,7 +13,7 @@
         <javac srcdir="${src.dir}" destdir="${classes.dir}" includeantruntime="false"/>
     </target>
 
-<!--    <target name="jar" depends="compile" description="generate the distribution jar">
+   <target name="jar" depends="compile" description="generate the distribution jar">
         <mkdir dir="${jar.dir}"/>
         <jar destfile="${jar.dir}/${ant.project.name}.jar" basedir="${classes.dir}">
             <manifest>
@@ -27,24 +26,8 @@
         <java jar="${jar.dir}/${ant.project.name}.jar" fork="true"/>
     </target>
 
-    <target name="build" depends="jar" description="build application"/>       -->
+    <target name="build" depends="jar" description="build application"/>     
     
-    
-     <target name="war" depends="compile" description="generate the distribution war">
-        <mkdir dir="${war.dir}"/>
-        <war destfile="${war.dir}/${ant.project.name}.war" basedir="${classes.dir}">
-            <manifest>
-                <attribute name="Main-Class" value="piona.Main"/>
-            </manifest>
-        </war>
-    </target>    
-
-    <target name="run" depends="war" description="run application">
-        <java war="${war.dir}/${ant.project.name}.war" fork="true"/>
-    </target>
-
-    <target name="build" depends="war" description="build application"/> 
-
     <target name="doc" description="generate documentation">
         <mkdir dir="${doc.dir}" />
         <javadoc destdir="${doc.dir}" sourcepath="${src.dir}"/>
